@@ -1,0 +1,26 @@
+<.header>
+  Listing Transactions
+  <:actions>
+    <.link href={~p"/transactions/new"}>
+      <.button>New Transaction</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="transactions" rows={@transactions} row_click={&JS.navigate(~p"/transactions/#{&1}")}>
+  <:col :let={transaction} label="Chave pix"><%= transaction.chave_pix %></:col>
+  <:col :let={transaction} label="Valor"><%= transaction.valor %></:col>
+  <:col :let={transaction} label="Data transacao"><%= transaction.data_transacao %></:col>
+  <:col :let={transaction} label="Descricao"><%= transaction.descricao %></:col>
+  <:action :let={transaction}>
+    <div class="sr-only">
+      <.link navigate={~p"/transactions/#{transaction}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/transactions/#{transaction}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={transaction}>
+    <.link href={~p"/transactions/#{transaction}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

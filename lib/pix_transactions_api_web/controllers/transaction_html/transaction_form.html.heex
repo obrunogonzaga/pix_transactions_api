@@ -1,0 +1,12 @@
+<.simple_form :let={f} for={@changeset} action={@action}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:chave_pix]} type="text" label="Chave pix" />
+  <.input field={f[:valor]} type="number" label="Valor" step="any" />
+  <.input field={f[:data_transacao]} type="date" label="Data transacao" />
+  <.input field={f[:descricao]} type="text" label="Descricao" />
+  <:actions>
+    <.button>Save Transaction</.button>
+  </:actions>
+</.simple_form>
